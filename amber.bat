@@ -3,7 +3,7 @@
 :init
 git clone http://125.227.156.121:443/Amber/Build/coral-repo.git .manifest
 pushd .manifest
-git clone http://125.227.156.121:443/Amber/Build/coral-sku.git
+git clone http://125.227.156.121:443/Amber/Build/coral-sku.git sku
 popd
 goto:eof
 
