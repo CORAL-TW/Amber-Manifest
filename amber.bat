@@ -16,8 +16,7 @@ echo " amber.sh sku update :  Pull the latest SKU configurations"
 goto:eof
 
 if [%1]==[] call:help
-
-if "%1"=="init" (
+    rmdir /s /q .manifest
     call:init
 ) else (
     if exist .manifest\ (

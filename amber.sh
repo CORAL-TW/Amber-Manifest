@@ -22,6 +22,7 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 if [ "$1" == "init" ] ; then
+  rm -rf .manifest
   init
   exit 0
 
