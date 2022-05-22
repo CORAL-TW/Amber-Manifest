@@ -10,9 +10,10 @@ function init() {
 
 function help() {
   echo "Amber Repo Script"
-  echo " amber.sh init      :  Initialize Amber Manifest"
-  echo " amber.sh sync <xxx>:  Start to sync xxx SKU. (empty for generic)"
-  echo " amber.sh sku yyy   :  Change SKU to yyy, then start to sync"
+  echo " amber.sh init       :  Initialize Amber Manifest"
+  echo " amber.sh sync <xxx> :  Start to sync xxx SKU. (empty for generic)"
+  echo " amber.sh update     :  Pull to the latest"
+  echo " amber.sh sku update :  Pull the latest SKU configurations"
 }
 
 if [[ $# -eq 0 ]] ; then
@@ -26,7 +27,7 @@ if [ "$TARGET_CMD" == "init" ] ; then
 
 else
   if [ -d ".manifest" ]; then
-    python3 .manifest/amber.py "$1"
+    python3 .manifest/main.py "$@"
   else
     echo "Please 'amber.sh init' first."
     exit 1
