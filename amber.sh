@@ -21,7 +21,7 @@ if [[ $# -eq 0 ]] ; then
   exit 1
 fi
 
-if [ "$TARGET_CMD" == "init" ] ; then
+if [ "$1" == "init" ] ; then
   init
   exit 0
 
