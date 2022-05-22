@@ -9,13 +9,16 @@ goto:eof
 
 :help
 echo "Amber Repo Script"
-echo " amber.sh init       :  Initialize Amber Manifest"
-echo " amber.sh sync <xxx> :  Start to sync xxx SKU. (empty for generic)"
-echo " amber.sh update     :  Pull to the latest"
-echo " amber.sh sku update :  Pull the latest SKU configurations"
+echo " amber.sh init         : Initialize Amber Manifest"
+echo " amber.sh sync <xxx>   : Start to sync xxx SKU. (empty for generic)"
+echo " amber.sh update       : Based on the SKU set at first, then sync again"
+echo " amber.sh sku update   : Pull the latest SKU configurations"
+echo " amber.sh [-h, --help] : Show this help message"
 goto:eof
 
 if [%1]==[] call:help
+
+if [%1]==["init"] (
     rmdir /s /q .manifest
     call:init
 ) else (
