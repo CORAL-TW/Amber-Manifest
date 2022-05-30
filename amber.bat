@@ -1,5 +1,21 @@
 @ECHO OFF
 
+SET PY_COMMAND=""
+
+where python3.exe >nul 2>nul
+IF NOT ERRORLEVEL 0 (
+  where python2.exe >nul 2>nul
+  IF NOT ERRORLEVEL 0 (
+     echo "Please check python install correctly"
+     goto:eof
+  ) ELSE (
+    SET PY_COMMAND="python2.exe"
+  )
+) ELSE (
+    SET PY_COMMAND="python3.exe"
+)
+
+
 if "%1"=="help"		goto help
 if "%1"=="init"		goto init
 if "%1"=="sync"		goto python
@@ -26,7 +42,7 @@ goto:eof
 
 :python
 if exist .manifest\ (
-	python3 .manifest\main.py %*
+	%PY_COMMAND% .manifest\main.py %*
 ) else (
 	echo "Please 'amber.bat init' first."
 )
