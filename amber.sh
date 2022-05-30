@@ -1,5 +1,21 @@
 #!/bin/bash
 
+PYTHON=""
+
+if ! command -v python3 &> /dev/null
+then
+
+  if ! command -v python &> /dev/null
+  then
+    echo "Please check python install correctly"
+    exit 1
+  else
+    PYTHON="python"
+  fi
+else
+  PYTHON="python3"
+fi
+
 function init() {
   git clone http://125.227.156.121:443/Amber/Build/coral-repo.git .manifest
 
@@ -29,7 +45,7 @@ if [ "$1" == "init" ] ; then
 
 else
   if [ -d ".manifest" ]; then
-    python3 .manifest/main.py "$@"
+    ${PYTHON} .manifest/main.py "$@"
   else
     echo "Please 'amber.sh init' first."
     exit 1
