@@ -4,7 +4,7 @@ SET PY_COMMAND=""
 
 where python3.exe >nul 2>nul
 IF NOT ERRORLEVEL 0 (
-  where python2.exe >nul 2>nul
+  where python.exe >nul 2>nul
   IF NOT ERRORLEVEL 0 (
      echo "Please check python install correctly"
      goto:eof
