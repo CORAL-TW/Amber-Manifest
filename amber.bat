@@ -1,26 +1,10 @@
 @ECHO OFF
 
-SET PY_COMMAND=""
-
-where python3.exe >nul 2>nul
-IF NOT ERRORLEVEL 0 (
-  where python.exe >nul 2>nul
-  IF NOT ERRORLEVEL 0 (
-     echo "Please check python install correctly"
-     goto:eof
-  ) ELSE (
-    SET PY_COMMAND="python2.exe"
-  )
-) ELSE (
-    SET PY_COMMAND="python3.exe"
-)
-
-
-if "%1"=="help"		goto help
-if "%1"=="init"		goto init
-if "%1"=="sync"		goto python
-if "%1"=="update"	goto python
-if "%1"=="sku" (if "%2"=="update" goto python)
+IF "%1"=="help"		goto help
+IF "%1"=="init"		goto init
+IF "%1"=="sync"		goto pre-python
+IF "%1"=="update"	goto pre-python
+IF "%1"=="sku" (IF "%2"=="update" goto pre-python)
 
 
 :help
@@ -40,10 +24,27 @@ git clone http://125.227.156.121:443/Amber/Build/coral-sku.git sku
 popd
 goto:eof
 
+:pre-python
+SET PY_COMMAND=""
+where python3.exe >nul 2>nul
+IF %ERRORLEVEL% EQU 0 (
+ECHO ERROR
+    SET PY_COMMAND="python3.exe"
+	goto python
+)
+where python.exe >nul 2>nul
+IF %ERRORLEVEL% EQU 0 (
+	SET PY_COMMAND="python.exe"
+	goto python
+) ELSE (
+	echo "Please check python install correctly"
+	goto:eof
+)
+
 :python
-if exist .manifest\ (
+IF exist .manifest\ (
 	%PY_COMMAND% .manifest\main.py %*
-) else (
+) ELSE (
 	echo "Please 'amber.bat init' first."
 )
 goto:eof
