@@ -25,16 +25,9 @@ popd
 goto:eof
 
 :pre-python
-SET PY_COMMAND=""
-where python3.exe >nul 2>nul
+SET PY_COMMAND="py"
+where py.exe >nul 2>nul
 IF %ERRORLEVEL% EQU 0 (
-ECHO ERROR
-    SET PY_COMMAND="python3.exe"
-	goto python
-)
-where python.exe >nul 2>nul
-IF %ERRORLEVEL% EQU 0 (
-	SET PY_COMMAND="python.exe"
 	goto python
 ) ELSE (
 	echo "Please check python install correctly"
