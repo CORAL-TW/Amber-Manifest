@@ -18,9 +18,9 @@ goto:eof
 
 :init
 rmdir .manifest /s /q 
-git clone http://gitsource.coralww.com/Amber/Build/coral-repo.git .manifest
+git clone https://github.com/CORAL-Sense/coral-repo.git .manifest
 pushd .manifest
-git clone http://gitsource.coralww.com/Amber/Build/coral-sku.git sku
+git clone https://github.com/CORAL-Sense/coral-sku.git sku
 popd
 goto:eof
 
