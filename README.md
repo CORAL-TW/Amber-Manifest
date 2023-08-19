@@ -7,10 +7,10 @@ Download file via the command below
 
 ### Example (Linux OS)
 #### Go to ncs target folder
-`cd /opt/nordic/ncs/v1.9.1`
+`cd /opt/nordic/ncs/v2.4.0`
 
 #### Download repo script
-`curl -O http://gitsource.coralww.com/coral/download/amber/-/raw/main/amber.sh`
+`curl -0 https://raw.githubusercontent.com/CoralSense/Amber-Manifest/main/amber.sh > amber.sh`
 
 #### Set execution permission
 `chmod a+x ./amber.sh`
